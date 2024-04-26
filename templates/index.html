@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}캐릭터 정보 조회{% endblock %}
+{% block content %}
+<form action="/maple/" method="POST">
+    <label for="character_name">캐릭터 닉네임:</label>
+    <input type="text" id="character_name" name="character_name">
+    <input type="submit" value="조회">
+</form>
+{% endblock %}
