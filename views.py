@@ -81,6 +81,22 @@ def characters():
     characters = session.query(Character).all()
     return render_template('characters.html', characters=characters)
 
+@maple.route("/char/stat")
+def stat():
+    headers = {
+        "x-nxopen-api-key": "test_220c33e40b65c92482e029516373f544dc8910fc39d0853f3ee728c02de95589bffac000d9444c05b54ecbf051285bb5"
+    }
+
+    url_string = "https://open.api.nexon.com/maplestory/v1/id?character_name=" + "ol픈소마"
+    response = requests.get(url_string, headers=headers)
+
+    if response.status_code == 200:
+        ocid = response.json().get('ocid', '')
+        if ocid:
+            url_string = f"https://open.api.nexon.com/maplestory/v1/character/stat?ocid={ocid}&date=2024-04-25"
+            response = requests.get(url_string, headers=headers)
+    return str(response.json())
+
 
 @maple.route('/delete_character/<int:character_id>', methods=['POST'])
 def delete_character(character_id):
