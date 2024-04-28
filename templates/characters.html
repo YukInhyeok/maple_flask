@@ -2,47 +2,49 @@
 {% block title %}캐릭터 정보{% endblock %}
 {% block content %}
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>날짜</th>
-        <th>캐릭터 이름</th>
-        <th>월드 이름</th>
-        <th>성별</th>
-        <th>클래스</th>
-        <th>클래스 레벨</th>
-        <th>레벨</th>
-        <th>경험치</th>
-        <th>경험치 비율</th>
-        <th>길드 이름</th>
-        <th>캐릭터 이미지</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for character in characters %}
+    <table border="1">
+        <thead>
         <tr>
-            <td>{{ character.date }}</td>
-            <td>{{ character.character_name }}</td>
-            <td>{{ character.world_name }}</td>
-            <td>{{ character.character_gender }}</td>
-            <td>{{ character.character_class }}</td>
-            <td>{{ character.character_class_level }}</td>
-            <td>{{ character.character_level }}</td>
-            <td>{{ character.character_exp }}</td>
-            <td>{{ character.character_exp_rate }}</td>
-            <td>{{ character.character_guild_name }}</td>
-            <td><img src="{{ character.character_image }}" alt="캐릭터 이미지"></td>
+            <th>날짜</th>
+            <th>캐릭터 이름</th>
+            <th>월드</th>
+            <th>성별</th>
+            <th>클래스</th>
+            <th>전직</th>
+            <th>레벨</th>
+            <th>경험치</th>
+            <th>경험치 비율</th>
+            <th>길드 이름</th>
+            <th>캐릭터 이미지</th>
+            <th>삭제</th> <!-- 여기에 삭제 열 추가 -->
         </tr>
-        <div style="text-align: right;">
-            <!-- 캐릭터 정보 출력 -->
-            <p>{{ character.character_name }}</p>
-            <!-- 삭제 버튼 -->
-            <form action="{{ url_for('maple.delete_character', character_id=character.id) }}" method="POST">
-                <input type="hidden" name="character_id" value="{{ character.id }}">
-                <button type="submit">삭제</button>
-            </form>
-        </div>
-    {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {% for character in characters %}
+            <tr>
+                <td>{{ character.date }}</td>
+{#                <td>{{ character.character_name }}</td>#}
+                <td><a href="{{ url_for('maple.stat', character_id=character.id) }}">{{ character.character_name }}</a></td>
+
+                <td>{{ character.world_name }}</td>
+                <td>{{ character.character_gender }}</td>
+                <td>{{ character.character_class }}</td>
+                <td>{{ character.character_class_level }}차</td>
+                <td>LV. {{ character.character_level }}</td>
+                <td>{{ character.character_exp }}</td>
+                <td>{{ character.character_exp_rate }} exp</td>
+                <td>{{ character.character_guild_name }}</td>
+{#                <td><img src="{{ character.character_image }}" alt="캐릭터 이미지"></td>#}
+                <td><a href="{{ url_for('maple.stat', character_id=character.id) }}"><img src="{{ character.character_image }}" alt="{{ character.character_name }}의 이미지" /></a></td>
+
+                <td> <!-- 삭제 버튼을 이 위치에 삽입 -->
+                    <form action="{{ url_for('maple.delete_character', character_id=character.id) }}" method="POST">
+                        <input type="hidden" name="character_id" value="{{ character.id }}">
+                        <button type="submit">삭제</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -13,7 +13,7 @@ response = requests.get(urlString, headers=headers)
 ocid = response.json()['ocid']
 
 # 단솜유저의 ocid값과 조회 기준일을 파라미터로 넘겨, 기본정보 조회하는 API를 호출
-urlString = "https://open.api.nexon.com/maplestory/v1/character/basic?ocid=" + ocid + "&date=2024-01-22"
+urlString = "https://open.api.nexon.com/maplestory/v1/character/stat?ocid=" + ocid + "&date=2024-01-22"
 # 단솜유저의 기본정보 조회 결과값 저장
 response = requests.get(urlString, headers=headers)
 

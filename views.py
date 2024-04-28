@@ -4,6 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from flask import Blueprint, render_template, redirect, url_for, request
 
+API_KEY = "test_220c33e40b65c92482e029516373f544dc8910fc39d0853f3ee728c02de95589bffac000d9444c05b54ecbf051285bb5"
+
 maple = Blueprint(
     "maple",
     __name__,
@@ -43,7 +45,7 @@ def index():
         character_name = request.form['character_name']
 
         headers = {
-            "x-nxopen-api-key": "test_220c33e40b65c92482e029516373f544dc8910fc39d0853f3ee728c02de95589bffac000d9444c05b54ecbf051285bb5"
+            "x-nxopen-api-key": API_KEY
         }
 
         url_string = "https://open.api.nexon.com/maplestory/v1/id?character_name=" + character_name
@@ -81,21 +83,27 @@ def characters():
     characters = session.query(Character).all()
     return render_template('characters.html', characters=characters)
 
-@maple.route("/char/stat")
-def stat():
+
+@maple.route("/char/stat/<int:character_id>")
+def stat(character_id):
+    # 캐릭터 정보 조회
+    character = session.query(Character).filter_by(id=character_id).first()
+    if character is None:
+        return "캐릭터를 찾을 수 없습니다.", 404
+
     headers = {
-        "x-nxopen-api-key": "test_220c33e40b65c92482e029516373f544dc8910fc39d0853f3ee728c02de95589bffac000d9444c05b54ecbf051285bb5"
+        "x-nxopen-api-key": API_KEY
     }
 
-    url_string = "https://open.api.nexon.com/maplestory/v1/id?character_name=" + "ol픈소마"
+    url_string = f"https://open.api.nexon.com/maplestory/v1/character/stat?ocid={character.character_ocid}&date=2024-04-25"
     response = requests.get(url_string, headers=headers)
 
     if response.status_code == 200:
-        ocid = response.json().get('ocid', '')
-        if ocid:
-            url_string = f"https://open.api.nexon.com/maplestory/v1/character/stat?ocid={ocid}&date=2024-04-25"
-            response = requests.get(url_string, headers=headers)
-    return str(response.json())
+        character_stats = response.json()
+        # 여기에서 character_stats 데이터를 사용하여 사용자에게 보여줄 페이지를 렌더링 할 수 있습니다.
+        return render_template('character_stats.html', character=character, stats=character_stats)
+    else:
+        return "스탯 정보를 가져올 수 없습니다.", response.status_code
 
 
 @maple.route('/delete_character/<int:character_id>', methods=['POST'])
