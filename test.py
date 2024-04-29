@@ -17,8 +17,8 @@ response = requests.get(urlString, headers=headers)
 # 조회한 ocid 값을 변수에 저장한다.
 ocid = response.json()['ocid']
 
-# 단솜유저의 ocid값과 조회 기준일을 파라미터로 넘겨, 기본정보 조회하는 API를 호출 /maplestory/v1/character/item-equipment
-urlString = "https://open.api.nexon.com/maplestory/v1/character/item-equipment?ocid=" + ocid + "&date=2024-04-28"
+# 단솜유저의 ocid값과 조회 기준일을 파라미터로 넘겨, 기본정보 조회하는 API를 호출 /maplestory/v1/character/skill
+urlString = "https://open.api.nexon.com/maplestory/v1/character/skill?ocid=" + ocid + "&date=2024-04-28&character_skill_grade=6"
 # 단솜유저의 기본정보 조회 결과값 저장
 response = requests.get(urlString, headers=headers)
 

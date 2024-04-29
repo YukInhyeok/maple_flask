@@ -2,7 +2,7 @@
 {% block title %}캐릭터 정보 조회{% endblock %}
 {% block content %}
     <style>
-        form{
+        .form{
             background: rgba( 255, 255, 255, 0.25 );
             box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
             backdrop-filter: blur( 4px );
@@ -22,15 +22,18 @@
             justify-content: center;
             align-items: center;
         }
-        button{
-            margin-left: 10px;
+        p{
+            display: flex;
+            justify-content: center;
         }
     </style>
+    <div class="form">
         <form action="/maple/" method="POST">
             <label for="character_name">캐릭터 닉네임: &nbsp;</label>
             <input type="text" id="character_name" name="character_name">
-            <input style="margin-left: 5px" type="submit" value="등록">
-            <button onclick="location.href='/maple/char'">캐릭터 목록</button>
+            <input type="submit" value="등록">
+            <p><button onclick="location.href='/maple/char'">캐릭터 목록</button></p>
         </form>
+    </div>
 
 {% endblock %}
