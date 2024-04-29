@@ -107,7 +107,6 @@ def stat(character_id):
     url_item = f"https://open.api.nexon.com/maplestory/v1/character/item-equipment?ocid={character.ocid}&data={yesterday}"
     response2 = requests.get(url_item, headers=headers)
 
-    # url_skill = f"https://open.api.nexon.com/maplestory/v1/character/hexamatrix?ocid={character.ocid}&data={yesterday}"
     url_skill = f"https://open.api.nexon.com/maplestory/v1/character/skill?ocid={character.ocid}&data={yesterday}&character_skill_grade=6"
     response3 = requests.get(url_skill, headers=headers)
     if response.status_code == 200:
