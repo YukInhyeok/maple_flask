@@ -3,6 +3,10 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from flask import Blueprint, render_template, redirect, url_for, request
+from datetime import date, timedelta
+
+today = date.today()
+yesterday = today - timedelta(days=1)
 
 API_KEY = "test_220c33e40b65c92482e029516373f544dc8910fc39d0853f3ee728c02de95589bffac000d9444c05b54ecbf051285bb5"
 
@@ -30,6 +34,7 @@ class Character(Base):
     character_exp_rate = Column(String)
     character_guild_name = Column(String)
     character_image = Column(String)
+    ocid = Column(String)
 
 
 engine = create_engine('sqlite:///maplestory.db')
@@ -54,7 +59,7 @@ def index():
         if response.status_code == 200:
             ocid = response.json().get('ocid', '')
             if ocid:
-                url_string = f"https://open.api.nexon.com/maplestory/v1/character/basic?ocid={ocid}&date=2024-04-25"
+                url_string = f"https://open.api.nexon.com/maplestory/v1/character/basic?ocid={ocid}&date={yesterday}"
                 response = requests.get(url_string, headers=headers)
                 if response.status_code == 200:
                     character_data = response.json()
@@ -69,7 +74,8 @@ def index():
                         character_exp=character_data['character_exp'],
                         character_exp_rate=character_data['character_exp_rate'],
                         character_guild_name=character_data['character_guild_name'],
-                        character_image=character_data['character_image']
+                        character_image=character_data['character_image'],
+                        ocid=ocid
                     )
                     session.add(character)
                     session.commit()
@@ -95,13 +101,19 @@ def stat(character_id):
         "x-nxopen-api-key": API_KEY
     }
 
-    url_string = f"https://open.api.nexon.com/maplestory/v1/character/stat?ocid={character.character_ocid}&date=2024-04-25"
+    url_string = f"https://open.api.nexon.com/maplestory/v1/character/stat?ocid={character.ocid}&date={yesterday}"
     response = requests.get(url_string, headers=headers)
 
+    url_item = f"https://open.api.nexon.com/maplestory/v1/character/item-equipment?ocid={character.ocid}&data={yesterday}"
+    response2 = requests.get(url_item, headers=headers)
+
+    url_skill = f"https://open.api.nexon.com/maplestory/v1/character/hexamatrix?ocid={character.ocid}&data={yesterday}"
+    response3 = requests.get(url_skill, headers=headers)
     if response.status_code == 200:
         character_stats = response.json()
-        # 여기에서 character_stats 데이터를 사용하여 사용자에게 보여줄 페이지를 렌더링 할 수 있습니다.
-        return render_template('character_stats.html', character=character, stats=character_stats)
+        character_item = response2.json()
+        character_skill = response3.json()
+        return render_template('character_stats.html', character=character, stats=character_stats, item=character_item, skill=character_skill)
     else:
         return "스탯 정보를 가져올 수 없습니다.", response.status_code
 
@@ -123,3 +135,8 @@ def delete_character(character_id):
         session.close()
     # 삭제 후 /maple/char 로 리다이렉트
     return redirect(url_for('maple.characters'))
+
+
+@maple.route("/char/stat/modal")
+def item_stat():
+    return render_template("modal.html")
