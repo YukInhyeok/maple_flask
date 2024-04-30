@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="132b02e9-1c1d-45c4-b1d1-f1338dffbe50" name="변경" comment="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가">
-      <change afterPath="$PROJECT_DIR$/static/MaplestoryBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/MaplestoryLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/char_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/stat_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/submit.png" afterDir="false" />
+    <list default="true" id="132b02e9-1c1d-45c4-b1d1-f1338dffbe50" name="변경" comment="mapleAPI &amp; flask 연습&#10;2024.04.30&#10;툴팁 기능 추가&#10;UI 개선">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maplestory.db" beforeDir="false" afterPath="$PROJECT_DIR$/maplestory.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/character_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/character_stats.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/characters.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/characters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +144,7 @@
       <workItem from="1714375199240" duration="5571000" />
       <workItem from="1714435257696" duration="15637000" />
       <workItem from="1714455426963" duration="11000" />
-      <workItem from="1714455455052" duration="7766000" />
+      <workItem from="1714455455052" duration="9664000" />
     </task>
     <task id="LOCAL-00001" summary="mapleAPI &amp; flask 연습">
       <option name="closed" value="true" />
@@ -196,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714380704295</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="mapleAPI &amp; flask 연습&#10;2024.04.30&#10;툴팁 기능 추가&#10;UI 개선">
+      <option name="closed" value="true" />
+      <created>1714463411079</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714463411079</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +204,8 @@
     <MESSAGE value="mapleAPI &amp; flask 연습" />
     <MESSAGE value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;캐릭터 정보, 장비, 6차스킬 조회추가" />
     <MESSAGE value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가" />
+    <MESSAGE value="mapleAPI &amp; flask 연습&#10;2024.04.30&#10;툴팁 기능 추가&#10;UI 개선" />
+    <option name="LAST_COMMIT_MESSAGE" value="mapleAPI &amp; flask 연습&#10;2024.04.30&#10;툴팁 기능 추가&#10;UI 개선" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/flaskProject02$test.coverage" NAME="test 커버리지 결과" MODIFIED="1714437467604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
