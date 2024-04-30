@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="132b02e9-1c1d-45c4-b1d1-f1338dffbe50" name="변경" comment="mapleAPI &amp; flask 연습&#10;2024.04.30&#10;툴팁 기능 추가&#10;UI 개선">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maplestory.db" beforeDir="false" afterPath="$PROJECT_DIR$/maplestory.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/character_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/character_stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,7 @@
       <workItem from="1714375199240" duration="5571000" />
       <workItem from="1714435257696" duration="15637000" />
       <workItem from="1714455426963" duration="11000" />
-      <workItem from="1714455455052" duration="9664000" />
+      <workItem from="1714455455052" duration="10253000" />
     </task>
     <task id="LOCAL-00001" summary="mapleAPI &amp; flask 연습">
       <option name="closed" value="true" />
@@ -194,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714463411079</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="mapleAPI &amp; flask 연습&#10;2024.04.30&#10;툴팁 기능 추가&#10;UI 개선">
+      <option name="closed" value="true" />
+      <created>1714465389714</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714465389714</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
