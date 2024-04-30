@@ -1,112 +1,10 @@
 {% extends "base.html" %}
 {% block title %}캐릭터 스탯{% endblock %}
 {% block content %}
-    <style>
-        .stat-tables {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-        }
-        .stat{
-            display: flex;
-            padding: 30px;
-            margin-left: 50px;
-
-            -webkit-border-radius: 50px;
-            border-radius: 50px;
-            background: #D1D8EC;
-            -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-            box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-        }
-        .item{
-            display: flex;
-            padding: 30px;
-
-            -webkit-border-radius: 50px;
-            border-radius: 50px;
-            background: #D1D8EC;
-            -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-            box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-        }
-        .skill{
-            display: flex;
-            padding: 30px;
-            width: 350px;
-            justify-content: center;
-            margin-right: 50px;
-
-            -webkit-border-radius: 50px;
-            border-radius: 50px;
-            background: #D1D8EC;
-            -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-            box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-        }
-        #char_img{
-            backdrop-filter: blur(5px); background-color: rgba(255, 255, 255, 1);
-            border-radius: 26px;
-            box-shadow: 35px 35px 68px 0px rgba(145, 192, 255, 0.5), inset -8px -8px 16px 0px rgba(145, 192, 255, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
-        }
-        h1{
-            text-align: center;
-        }
-        .back{
-            text-align: center;
-        }
-        table{
-            background-color: #f0f8ff;
-        }
-        .skill_table{
-            width: 300px;
-        }
-        /* 모달창 기본 스타일 */
-        .modal {
-            display: none; /* 기본적으로 숨겨져 있음 */
-            position: fixed; /* 화면에 고정 */
-            z-index: 1; /* 다른 요소 위에 표시 */
-            left: 0;
-            top: 0;
-            width: 100%; /* 전체 너비 */
-            height: 100%; /* 전체 높이 */
-            overflow: auto; /* 필요시 스크롤바 추가 */
-            background-color: rgb(0,0,0); /* 검은색 배경 */
-            background-color: rgba(0,0,0,0.4); /* 어둡게 */
-        }
-
-        /* 모달 컨텐츠 스타일 */
-        .modal-content {
-            {#background-color: #fefefe;#}
-            margin: 15% auto; /* 화면 중앙에 위치 */
-            padding: 20px;
-            {#border: 1px solid #888;#}
-            width: 30%; /* 대부분의 너비 */
-
-            background: rgba( 255, 255, 255, 0.6 );
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 15px );
-            -webkit-backdrop-filter: blur( 15px );
-            border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-        }
-
-        /* 닫기 버튼 스타일 */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    </style>
-    <p style="text-align: center">
-    <img id="char_img" src="{{ character.character_image }}" alt="캐릭터 이미지">
-    </p>
+    <link href="{{ url_for('static', filename='stat_style.css') }}" rel="stylesheet">
+<p style="text-align: center">
+<img id="char_img" src="{{ character.character_image }}" alt="캐릭터 이미지">
+</p>
 <h1>
     {{ character.character_name }} 님의 정보
 </h1>
@@ -146,25 +44,22 @@
             </tbody>
         </table>
     </div>
-    <div class="item">
-        <table class="item-table1" border="1">
+    <div id="item_div" class="item">
+        <table class="item-table" border="1">
             <thead>
                 <tr>
-                    <th>이미지</th>
-                    <th>종류</th>
-                    <th>이름</th>
+                    <th>&nbsp;이미지&nbsp;</th>
+                    <th>&nbsp;종류&nbsp;</th>
+                    <th>&nbsp;이름&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
             {% for item in item.item_equipment[:item.item_equipment|length//2] %}
                 <tr>
-                    <td><img src="{{ item.item_icon }}" alt="아이템 이미지" data-modal-target="{{ 'myModal' + item.item_name | replace(' ', '') }}"></td>
-                    <td>{{ item.item_equipment_slot }}</td>
-                    <td>{{ item.item_name }}</td>
-                </tr>
-                <div id="myModal{{ item.item_name | replace(' ', '') }}" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
+                    <td>
+                        <div class="tooltip">
+                            <img src="{{ item.item_icon }}" alt="아이템 이미지">
+                            <span class="item_tooltiptext">
                         <h2>{{ item.item_name }}({{ item.starforce }}성)</h2>
                         <h3>기본 스탯</h3>
                         <ul>
@@ -174,65 +69,79 @@
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <h3>잠재능력: {{ item.potential_option_grade}}</h3>
-                    <ul>
-                        <li>{{ item.potential_option_1}}</li>
-                        <li>{{ item.potential_option_2}}</li>
-                        <li>{{ item.potential_option_3}}</li>
-                    </ul>
-                    <h3>에디셔널: {{ item.additional_potential_option_grade }}</h3>
-                    <ul>
-                        <li>{{ item.additional_potential_option_1 }}</li>
-                        <li>{{ item.additional_potential_option_2 }}</li>
-                        <li>{{ item.additional_potential_option_3 }}</li>
-                    </ul>
-                    </div>
-                </div>
-            {% endfor %}
-            </tbody>
-        </table>
-        </table>
-        <table class="item-table2" border="1">
-            <thead>
-            <tr>
-                <th>이미지</th>
-                <th>종류</th>
-                <th>이름</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for item in item.item_equipment[item.item_equipment|length//2:] %}
-                <tr>
-                    <td><img src="{{ item.item_icon }}" alt="아이템 이미지" data-modal-target="{{ 'myModal' + item.item_name | replace(' ', '') }}"></td>
-                    <td>{{ item.item_equipment_slot }}</td>
-                    <td>{{ item.item_name }}</td>
-                </tr>
-                <div id="myModal{{ item.item_name | replace(' ', '') }}" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>{{ item.item_name }}({{ item.starforce }}성)</h2>
-                        <h3>기본 스탯</h3>
-                        <ul>
-                            {% for key, value in item.item_total_option.items() %}
-                                {% if value != '0' and value != 0 %}
-                                    <li>{{ key.replace('_', ' ').title() }}: {{ value }}</li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
+                            {% if item.potential_option_grade != None %}
                         <h3>잠재능력: {{ item.potential_option_grade}}</h3>
                         <ul>
                             <li>{{ item.potential_option_1}}</li>
                             <li>{{ item.potential_option_2}}</li>
                             <li>{{ item.potential_option_3}}</li>
                         </ul>
+                            {% endif %}
+                            {% if item.additional_potential_option_grade != None %}
+                        <h3>에디셔널: {{ item.additional_potential_option_grade }}</h3>
+
+                        <ul>
+                            <li>{{ item.additional_potential_option_1 }}</li>
+                            <li>{{ item.additional_potential_option_2 }}</li>
+                            <li>{{ item.additional_potential_option_3 }}</li>
+                        </ul>
+                            {% endif %}
+                    </span>
+                        </div>
+                    </td>
+                    <td>&nbsp;{{ item.item_equipment_slot }}&nbsp;</td>
+                    <td>&nbsp;{{ item.item_name }}&nbsp;</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </table>
+        <table class="item-table" border="1">
+            <thead>
+            <tr>
+                <th>&nbsp;이미지&nbsp;</th>
+                <th>&nbsp;종류&nbsp;</th>
+                <th>&nbsp;이름&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in item.item_equipment[item.item_equipment|length//2:] %}
+                <tr>
+                    <td>
+                        <div class="tooltip">
+                            <img src="{{ item.item_icon }}" alt="아이템 이미지">
+                    <span class="item_tooltiptext">
+                        <h2>{{ item.item_name }}({{ item.starforce }}성)</h2>
+                        <h3>기본 스탯</h3>
+                        <ul>
+                            {% for key, value in item.item_total_option.items() %}
+                                {% if value != '0' and value != 0 and value != 'None' %}
+                                    <li>{{ key.replace('_', ' ').title() }}: {{ value }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% if item.potential_option_grade != None %}
+                        <h3>잠재능력: {{ item.potential_option_grade}}</h3>
+                        <ul>
+                            <li>{{ item.potential_option_1}}</li>
+                            <li>{{ item.potential_option_2}}</li>
+                            <li>{{ item.potential_option_3}}</li>
+                        </ul>
+                            {% endif %}
+                        {% if item.additional_potential_option_grade != None %}
                         <h3>에디셔널: {{ item.additional_potential_option_grade }}</h3>
                         <ul>
                             <li>{{ item.additional_potential_option_1 }}</li>
                             <li>{{ item.additional_potential_option_2 }}</li>
                             <li>{{ item.additional_potential_option_3 }}</li>
                         </ul>
-                    </div>
-                </div>
+                    {% endif %}
+                    </span>
+                        </div>
+                    </td>
+                    <td>&nbsp;{{ item.item_equipment_slot }}&nbsp;</td>
+                    <td>&nbsp;{{ item.item_name }}&nbsp;</td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
@@ -249,7 +158,17 @@
             <tbody>
                 {% for skill in skill.character_skill %}
                 <tr>
-                    <td><img src="{{ skill.skill_icon }}"></td>
+                    <td>
+                        <div class="tooltip">
+                            <img src="{{ skill.skill_icon }}">
+                            <span class="tooltiptext">
+                                <h3>{{ skill.skill_name }}</h3>
+                                {% if skill.skill_effect != None %}
+                                {{ skill.skill_effect }}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </td>
                     <td>{{ skill.skill_name }}</td>
                     <td>{{ skill.skill_level }}</td>
                 </tr>
@@ -259,44 +178,30 @@
     </div>
 </div>
     <p class="back">
-        <button onclick="history.back()">뒤로가기</button>
+        <button id="back_btn" onclick="history.back()">
+            뒤로가기
+        </button>
     </p>
-    <script>
-        // 모달 가져오기
-        const modal = document.getElementById('myModal');
+<script>
+const imgs = document.querySelectorAll('.item-table img')
 
-        // 이미지 클릭 시 모달 열기
-        document.querySelectorAll('td img').forEach(item => {
-            item.onclick = function() {
-                // data-modal-target 값으로 모달 ID를 가져옴
-                const modalId = item.getAttribute('data-modal-target');
-                const modal = document.getElementById(modalId);
-
-                if (modal) {
-                    modal.style.display = "block";
-
-                    // 모달 닫기 버튼에 대한 이벤트 리스너 추가
-                    modal.querySelector('.close').onclick = function() {
-                        modal.style.display = "none";
-                    }
-                }
-            }
-        });
-
-        // 닫기 버튼 가져오기
-        const span = document.getElementsByClassName("close")[0];
-
-        // 닫기 버튼 클릭 시 모달 닫기
-        span.onclick = function() {
-            modal.style.display = "none";
+for(let i = 0; i < imgs.length; i++){
+    imgs[i].addEventListener("mouseover", function(e){
+        let item_tooltips = document.querySelectorAll('.item_tooltiptext');
+        console.log(e.y)
+        if (e.y <= 600){
+            item_tooltips.forEach(function(item_tooltip) {
+                item_tooltip.style.bottom = '-350px'; // 각각의 요소에 대해 스타일 변경
+            });
+        } else{
+            item_tooltips.forEach(function(item_tooltip) {
+                item_tooltip.style.bottom = '100%'; // 각각의 요소에 대해 스타일 변경
+            });
         }
+    })
+}
+</script>
 
-        // 모달 밖 클릭 시 모달 닫기
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-            }
-        }
-    </script>
 
 {% endblock %}
+

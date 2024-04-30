@@ -1,0 +1,157 @@
+li{
+    list-style: none;
+    margin-left: -40px;
+}
+.stat-tables {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.stat{
+    display: flex;
+    padding: 30px;
+    margin-left: 50px;
+
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    background: #D1D8EC;
+    -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+.item{
+    display: flex;
+    padding: 30px;
+
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    background: #D1D8EC;
+    -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+.skill{
+    display: flex;
+    padding: 30px;
+    width: 350px;
+    justify-content: center;
+    margin-right: 50px;
+
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    background: #D1D8EC;
+    -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+#char_img{
+    backdrop-filter: blur(5px); background-color: rgba(255, 255, 255, 1);
+    border-radius: 26px;
+    box-shadow: 35px 35px 68px 0px rgba(145, 192, 255, 0.5), inset -8px -8px 16px 0px rgba(145, 192, 255, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+h1{
+    text-align: center;
+}
+.back{
+    text-align: center;
+}
+table{
+    background-color: #f0f8ff;
+}
+.skill_table{
+    width: 300px;
+}
+
+/* 툴팁 관련 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 400px;
+    color: black;
+    text-align: center;
+    line-height: 25px;
+    padding: 10px 0;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+
+    background: rgba( 255, 255, 255, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+/*아이템 툴팁*/
+.tooltip .item_tooltiptext {
+    visibility: hidden;
+    width: 400px;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 10px 0;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 100px;
+    margin-left: -60px;
+
+    background: rgba( 255, 255, 255, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.tooltip:hover .item_tooltiptext {
+    visibility: visible;
+}
+/* 뒤로가기 버튼 */
+#back_btn{
+    background:#89A4ED;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:40px;
+    font-size:1.1em;
+    padding:0 10px;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    bottom: -15px;
+}
+#back_btn:hover{
+    background:#fff;
+    color:#5BB2F0;
+}
+#back_btn:before,#back_btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #5BB2F0;
+    transition:400ms ease all;
+}
+#back_btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+#back_btn:hover:before,#back_btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}

@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="132b02e9-1c1d-45c4-b1d1-f1338dffbe50" name="변경" comment="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;캐릭터 정보, 장비, 6차스킬 조회추가">
+    <list default="true" id="132b02e9-1c1d-45c4-b1d1-f1338dffbe50" name="변경" comment="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가">
+      <change afterPath="$PROJECT_DIR$/static/MaplestoryBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/MaplestoryLight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/char_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/stat_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/submit.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maplestory.db" beforeDir="false" afterPath="$PROJECT_DIR$/maplestory.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/character_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/character_stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/characters.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/characters.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +30,8 @@
       <list>
         <option value="Flask Main" />
         <option value="Python Script" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -64,6 +73,7 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/202-24/PycharmProjects/flaskProject02/static&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -73,7 +83,16 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\202-24\PycharmProjects\flaskProject02\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\202-24\PycharmProjects\flaskProject02\static" />
+      <recent name="C:\Users\202-24\PycharmProjects\flaskProject02\static\image" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Flask 서버.flaskProject02">
     <configuration name="Flask (app.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
       <module name="flaskProject02" />
       <option name="target" value="$PROJECT_DIR$/app.py" />
@@ -82,7 +101,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -98,7 +117,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -132,7 +151,10 @@
       <workItem from="1714110607317" duration="10848000" />
       <workItem from="1714352856215" duration="14055000" />
       <workItem from="1714369601075" duration="5409000" />
-      <workItem from="1714375199240" duration="5069000" />
+      <workItem from="1714375199240" duration="5571000" />
+      <workItem from="1714435257696" duration="15637000" />
+      <workItem from="1714455426963" duration="11000" />
+      <workItem from="1714455455052" duration="7766000" />
     </task>
     <task id="LOCAL-00001" summary="mapleAPI &amp; flask 연습">
       <option name="closed" value="true" />
@@ -158,7 +180,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714378471130</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가">
+      <option name="closed" value="true" />
+      <created>1714380362077</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714380362077</updated>
+    </task>
+    <task id="LOCAL-00005" summary="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가">
+      <option name="closed" value="true" />
+      <created>1714380704295</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714380704295</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,10 +205,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mapleAPI &amp; flask 연습" />
     <MESSAGE value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;캐릭터 정보, 장비, 6차스킬 조회추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;캐릭터 정보, 장비, 6차스킬 조회추가" />
+    <MESSAGE value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="mapleAPI &amp; flask 연습&#10;2024.04.29&#10;6차스킬 정보 추가" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flaskProject02$test.coverage" NAME="test 커버리지 결과" MODIFIED="1714379822866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flaskProject02$test.coverage" NAME="test 커버리지 결과" MODIFIED="1714437467604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flaskProject02$flaskProject02.coverage" NAME="flaskProject02 커버리지 결과" MODIFIED="1714111503813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/flaskProject02$Flask__app_py_.coverage" NAME="Flask (app.py) 커버리지 결과" MODIFIED="1714112021217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>

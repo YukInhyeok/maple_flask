@@ -1,0 +1,65 @@
+html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    background: #D1D8EC;
+    -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    padding: 30px;
+    text-align: center;
+}
+button{
+    margin-top: 10px;
+}
+table{
+    background-color: #f0f8ff;
+}
+.del_img{
+    border: none;
+    background: none;
+}
+#delete{
+    width: 20px;
+    height: 20px;
+}
+#home{
+    background:#89A4ED;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:40px;
+    font-size:1.1em;
+    padding:0 10px;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    bottom: -15px;
+}
+#home:hover{
+    background:#fff;
+    color:#5BB2F0;
+}
+#home:before,#home:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #5BB2F0;
+    transition:400ms ease all;
+}
+#home:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+#home:hover:before,#home:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}

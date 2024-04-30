@@ -1,39 +1,16 @@
 {% extends "base.html" %}
 {% block title %}캐릭터 정보 조회{% endblock %}
 {% block content %}
-    <style>
-        .form{
-            background: rgba( 255, 255, 255, 0.25 );
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 4px );
-            -webkit-backdrop-filter: blur( 4px );
-            border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-            width: 500px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        html{
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        p{
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
     <div class="form">
         <form action="/maple/" method="POST">
-            <label for="character_name">캐릭터 닉네임: &nbsp;</label>
+            <label for="character_name">캐릭터 닉네임</label>
             <input type="text" id="character_name" name="character_name">
-            <input type="submit" value="등록">
-            <p><button onclick="location.href='/maple/char'">캐릭터 목록</button></p>
         </form>
+        <button id="submit" type="submit">
+            <img src="{{ url_for('static', filename='submit.png') }}">
+        </button>
+        <p><button id="list" onclick="location.href='/maple/char'">캐릭터 목록</button></p>
     </div>
 
 {% endblock %}

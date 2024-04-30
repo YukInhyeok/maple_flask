@@ -64,7 +64,7 @@ def index():
                 if response.status_code == 200:
                     character_data = response.json()
                     character = Character(
-                        date=character_data['date'],
+                        date=character_data['date'][:10],
                         character_name=character_data['character_name'],
                         world_name=character_data['world_name'],
                         character_gender=character_data['character_gender'],

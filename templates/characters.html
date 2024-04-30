@@ -1,29 +1,7 @@
 {% extends "base.html" %}
 {% block title %}캐릭터 정보{% endblock %}
 {% block content %}
-    <style>
-        html{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        div{
-            -webkit-border-radius: 50px;
-            border-radius: 50px;
-            background: #D1D8EC;
-            -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-            box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-            padding: 30px;
-            text-align: center;
-        }
-        button{
-            margin-top: 10px;
-        }
-        table{
-            background-color: #f0f8ff;
-        }
-    </style>
-
+    <link href="{{ url_for('static', filename='char_style.css') }}" rel="stylesheet">
     <div>
         <table border="1">
             <thead>
@@ -57,17 +35,18 @@
                     <td>{{ character.character_exp_rate }} exp</td>
                     <td>{{ character.character_guild_name }}</td>
                     <td><a href="{{ url_for('maple.stat', character_id=character.id) }}"><img src="{{ character.character_image }}" alt="{{ character.character_name }}의 이미지" /></a></td>
-
                     <td>
                         <form action="{{ url_for('maple.delete_character', character_id=character.id) }}" method="POST">
                             <input type="hidden" name="character_id" value="{{ character.id }}">
-                            <button type="submit">삭제</button>
+                            <button class="del_img" type="submit">
+                                <img id="delete" src="{{ url_for('static', filename='delete.png') }}">
+                            </button>
                         </form>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-    <button onclick="location.href='/maple/'">처음으로</button>
+    <button id="home" onclick="location.href='/maple/'">처음으로</button>
     </div>
 {% endblock %}
